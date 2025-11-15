@@ -55,6 +55,45 @@ header_print("Exercise 1.1")
 orders_strings = ...
 # from .solutions.exercise_1_1 import orders_strings
 
+
+print("🔍 Parsing data...")
+
+# 1. Split the long string into individual records
+records = data_string.split(";")
+
+parsed_data = []
+
+for record in records:
+    record = record.strip()  # remove leading/trailing spaces
+    if not record:
+        continue  # skip empty records
+
+    fields = record.split(",")
+
+    # Each record must contain exactly 6 fields
+    if len(fields) != 6:
+        continue
+
+    # Unpack the fields
+    name, age, gender, date_str, hairstyle, order_num = fields
+
+    # Convert the record into a clean dictionary
+    parsed_data.append({
+        "name": name.strip(),
+        "age": int(age),
+        "gender": gender.strip(),
+        "date": date_str.strip(),
+        "hairstyle": hairstyle.strip(),
+        "order_num": int(order_num),
+    })
+
+print(f"📦 Successfully parsed {len(parsed_data)} records!")
+
+    #Test_to_show_the_resul_tex1.1
+print(parsed_data[:1])
+
+
+
 """
 Exercise 1.2
 ============
@@ -68,6 +107,21 @@ it `orders_lists`.
 header_print("Exercise 1.2")
 orders_lists = ...
 # from .solutions.exercise_1_2 import orders_list
+
+orders_lists = []
+
+for record in records:
+    record = record.strip()
+    if not record:
+        continue
+
+    fields = record.split(",")
+    orders_lists.append(fields)
+
+
+    #Test_to_show_the_result_ex1.2
+print("Example:", orders_lists[:3])
+
 
 """
 Exercise 1.3
@@ -83,6 +137,25 @@ and name it `orders_cleaned`.
 header_print("Exercise 1.3")
 orders_cleaned = ...
 # from .solutions.exercise_1_3 import orders_cleaned
+
+orders_cleaned = []
+
+for order in orders_lists:
+    # Copy the order so we don't change the original
+    cleaned_order = order.copy()
+
+    # Clean the name (index 0)
+    cleaned_order[0] = cleaned_order[0].strip()
+
+    orders_cleaned.append(cleaned_order)
+
+
+
+    #Test_to_show_the_result_ex1.3
+print("Example:", orders_cleaned[:2])
+
+
+
 
 """
 Exercise 1.4
@@ -100,6 +173,25 @@ new variable and name it `orders_casted`.
 header_print("Exercise 1.4")
 orders_casted = ...
 # from .solutions.exercise_1_4 import orders_casted
+
+
+orders_casted = []
+
+for order in orders_cleaned:
+    # Copy the order to avoid changing the original
+    casted_order = order.copy()
+
+    # Convert age and order_num to integers
+    casted_order[1] = int(casted_order[1])      # age
+    casted_order[5] = int(casted_order[5])      # order_num / price
+
+    orders_casted.append(casted_order)
+
+
+
+    #Test_to_show_the_result_ex1.4
+print("Example:", orders_casted[:3])
+
 
 """
 Exercise 2
