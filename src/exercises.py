@@ -215,6 +215,17 @@ What were the first 3 orders?
 header_print("Exercise 2.1")
 orders_first_3 = ...
 
+orders_first_3 = orders_casted[:3]  # take the first 3 orders
+
+# Print them in the required format
+for order in orders_first_3:
+    name = order[0]
+    hairstyle = order[4]
+    date = order[3]
+    price = order[5]
+    print(f"Customer {name} got the haircut {hairstyle} on {date} for €{price:.2f}.")
+
+
 """
 Exercise 2.2
 ============
@@ -222,6 +233,18 @@ What were the last 5 orders?
 """
 header_print("Exercise 2.2")
 orders_last_5 = ...
+
+
+orders_last_5 = orders_casted[-5:]  # take the last 5 orders
+
+# Print them in the required format
+for order in orders_last_5:
+    name = order[0]
+    hairstyle = order[4]
+    date = order[3]
+    price = order[5]
+    print(f"Customer {name} got the haircut {hairstyle} on {date} for €{price:.2f}.")
+
 
 """
 Exercise 2.3
@@ -231,6 +254,19 @@ What was the 1000th order?
 header_print("Exercise 2.3")
 order_1000 = ...
 
+
+
+order_1000 = orders_casted[999]  # 1000th order (index 999)
+
+# Print in the required format
+name = order_1000[0]
+hairstyle = order_1000[4]
+date = order_1000[3]
+price = order_1000[5]
+
+print(f"Customer {name} got the haircut {hairstyle} on {date} for €{price:.2f}.")
+
+
 """
 Exercise 2.4
 ============
@@ -238,6 +274,18 @@ What were the 2000th until 2025th orders?
 """
 header_print("Exercise 2.4")
 order_2000_to_2025 = ...
+
+order_2000_to_2025 = orders_casted[1999:2025]  # orders 2000 to 2025 (inclusive)
+
+# Print them in the required format
+for order in order_2000_to_2025:
+    name = order[0]
+    hairstyle = order[4]
+    date = order[3]
+    price = order[5]
+    print(f"Customer {name} got the haircut {hairstyle} on {date} for €{price:.2f}.")
+
+
 
 """
 Exercise 3
@@ -253,6 +301,33 @@ Extra challenge: Try this with a set comprehension!
 """
 header_print("Exercise 3")
 unique_names = ...
+
+
+# Use a set comprehension to get unique names
+unique_names = {order[0] for order in orders_casted}
+
+# Convert to list if you want ordered printing (optional)
+unique_names_list = list(unique_names)
+
+print(f"There are {len(unique_names)} unique names, namely {unique_names_list}")
+
+
+#Show the unique names vertically and count the times in addition to oredering A - Z
+
+from collections import Counter
+
+# 1. Extract all names
+all_names = [order[0] for order in orders_casted]
+
+# 2. Count occurrences
+name_counts = Counter(all_names)
+
+# 3. Sort names alphabetically
+for name in sorted(name_counts):
+    print(f"{name} — {name_counts[name]}")
+
+
+
 
 """
 Exercise 4
