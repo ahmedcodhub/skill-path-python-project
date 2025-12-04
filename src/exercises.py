@@ -123,6 +123,21 @@ for record in records:
 print("Example:", orders_lists[:3])
 
 
+orders_dictionary = {}
+ 
+for i in range(len(records)):
+    record = records[i]
+    record = record.split(',')
+    orders_dictionary[i]= {"Name":record[0],
+                           "Age": record[1],
+                           "Gender": record[2],
+                           "Date": record[3],
+                           "Hairstyle":record[4],
+                           "Order_number":record[5]}
+ 
+ print (orders_dictionary)
+
+
 """
 Exercise 1.3
 ============
